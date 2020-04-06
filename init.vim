@@ -28,6 +28,8 @@ set wildoptions=pum
 "Sets kind of a transparency thing, but might look weird, commented out for now.
 "set pumblend=80
 
+"Disables timeout for leader key for example
+set notimeout
 "Vim keybinds:
 "####################################################################################################
 " Setting leader key to <Space>
@@ -91,6 +93,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'ncm2/ncm2-vim-lsp'
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-path'
+    "####################################################################################################
+    "Avy-like jump-to-char
+    Plug 'easymotion/vim-easymotion'
     "####################################################################################################
     " to update &runtimepath and initialize plugin system:
     " Automatically executes filetype plugin indent on and syntax enable. You can
@@ -167,6 +172,14 @@ if executable('ccls')
       \ 'whitelist': ['h',  'hpp', 'c', 'cpp', 'objc', 'objcpp', 'cc'],
       \ })
 endif
+nnoremap <leader>def :LspDefinition<cr>
+nnoremap <leader>pdef :LspPeekDefinition<cr>
+nnoremap <leader>dec :LspDeclaration<cr>
+nnoremap <leader>pdec :LspPeekDeclaration<cr>
+nnoremap <leader>imp :LspImplementation<cr>
+nnoremap <leader>hov :LspHover<cr>
+nnoremap <leader>refs :LspReferences<cr>
+
 "====================================================================================================
 
 
