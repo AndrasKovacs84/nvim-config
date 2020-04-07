@@ -1,5 +1,6 @@
 " Line number vs relative number
 set relativenumber
+set nu rnu
 "set number
 
 "Highlight the current line
@@ -24,7 +25,7 @@ set undofile
 set undodir=/tmp
 
 "Wildmenu
-set wildoptions=pum
+set wildoptions=pum "Pum = pop up menu
 "Sets kind of a transparency thing, but might look weird, commented out for now.
 "set pumblend=80
 
@@ -34,6 +35,11 @@ set notimeout
 "####################################################################################################
 " Setting leader key to <Space>
 let mapleader = " "
+
+"Sessions
+let g:sessions_dir = '~/nvim-sessions'
+exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
 "Better vertical movement for wrapped lines
 nnoremap j gj
@@ -69,7 +75,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     "####################################################################################################
     " Airline - status bar plugin
-    Plug 'bling/vim-airline'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
     "####################################################################################################
     " Color scheme
     Plug 'tomasr/molokai'
@@ -96,6 +104,11 @@ call plug#begin('~/.local/share/nvim/plugged')
     "####################################################################################################
     "Avy-like jump-to-char
     Plug 'easymotion/vim-easymotion'
+    "####################################################################################################
+    "Fuzzy finder for files - fzy
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
+
     "####################################################################################################
     " to update &runtimepath and initialize plugin system:
     " Automatically executes filetype plugin indent on and syntax enable. You can
@@ -158,6 +171,14 @@ nnoremap <leader>w :StripWhitespace<cr>
 "Default binding to enter split resize mode is <C-E>
 "====================================================================================================
 
+"####################################################################################################
+"Airline - A powerline plugin
+"====================================================================================================
+"set the theme
+let g:airline_theme='molokai'
+"enable powerline fonts
+let g:airline_powerline_fonts=1
+"====================================================================================================
 
 "####################################################################################################
 "Language server protocol - vim-lsp
